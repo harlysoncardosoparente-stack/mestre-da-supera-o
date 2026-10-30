@@ -9,7 +9,8 @@
 :root{color-scheme:dark;--bg:#101b18;--panel:#1b2b25;--text:#f3f5ef;--muted:#bdc9bf;--accent:#c8dfad}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#101b18,#182a24);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
 main{width:min(960px,92%);margin:0 auto;padding:36px 0 64px}header{padding:24px 0 12px}h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.08;margin:.2em 0;color:var(--accent)}.intro{color:var(--muted);max-width:720px}
-section{background:var(--panel);border:1px solid #385044;border-radius:18px;padding:22px;margin:22px 0;box-shadow:0 12px 32px #0003}h2{margin-top:0;font-size:1.35rem}audio{width:100%;margin:10px 0 4px}img{display:block;width:100%;height:auto;border-radius:12px;background:#fff}iframe{width:100%;height:min(75vh,850px);border:0;border-radius:12px;background:#fff}.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}a{color:var(--accent)}.hint{color:var(--muted);font-size:.92rem}footer{color:var(--muted);font-size:.9rem;padding-top:12px}
+section{background:var(--panel);border:1px solid #385044;border-radius:18px;padding:22px;margin:22px 0;box-shadow:0 12px 32px #0003}h2{margin-top:0;font-size:1.35rem}audio{width:100%;margin:10px 0 4px}img{display:block;width:100%;height:auto;border-radius:12px;background:#fff}.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}a{color:var(--accent)}.hint{color:var(--muted);font-size:.92rem}footer{color:var(--muted);font-size:.9rem;padding-top:12px}
+#pdf-status{color:var(--muted);margin:8px 0}#pdf-pages{display:grid;gap:16px}#pdf-pages canvas{display:block;width:100%;height:auto;background:#fff;border-radius:8px;box-shadow:0 4px 16px #0005}
 </style>
 </head>
 <body>
@@ -38,11 +39,33 @@ Seu navegador não conseguiu reproduzir este áudio. Use o link para baixar o ar
 </section>
 <section>
 <h2>📘 Apresentação — Neurociência da Superação</h2>
-<iframe src="https://raw.githubusercontent.com/harlysoncardosoparente-stack/mestre-da-supera-o/main/materiais/apresentacoes/Apresentacao_Neuroci%C3%AAncia_da_Supera%C3%A7%C3%A3o.pdf" title="Apresentação Neurociência da Superação"></iframe>
-<p class="hint">Se a visualização incorporada não funcionar no seu navegador, use o link abaixo.</p>
-<a href="https://raw.githubusercontent.com/harlysoncardosoparente-stack/mestre-da-supera-o/main/materiais/apresentacoes/Apresentacao_Neuroci%C3%AAncia_da_Supera%C3%A7%C3%A3o.pdf">Abrir ou baixar o PDF</a>
+<p id="pdf-status" role="status">Preparando a apresentação…</p>
+<div id="pdf-pages" aria-label="Páginas da apresentação"></div>
+<p class="hint">As páginas aparecem aqui para leitura direta no site. A primeira abertura pode levar um pouco mais de tempo.</p>
+<a href="https://raw.githubusercontent.com/harlysoncardosoparente-stack/mestre-da-supera-o/main/materiais/apresentacoes/Apresentacao_Neuroci%C3%AAncia_da_Supera%C3%A7%C3%A3o.pdf" target="_blank" rel="noopener">Abrir ou baixar o PDF original</a>
 </section>
 <footer>Projeto MESTRE DA SUPERAÇÃO · Materiais originais preservados no repositório GitHub.</footer>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(async function(){
+ const url="https://raw.githubusercontent.com/harlysoncardosoparente-stack/mestre-da-supera-o/main/materiais/apresentacoes/Apresentacao_Neuroci%C3%AAncia_da_Supera%C3%A7%C3%A3o.pdf";
+ const status=document.getElementById("pdf-status"), pages=document.getElementById("pdf-pages");
+ if(!window.pdfjsLib){status.textContent="Não foi possível carregar o visualizador. Use o link do PDF original.";return;}
+ pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+ try{
+  const pdf=await pdfjsLib.getDocument({url}).promise;
+  status.textContent="Apresentação carregada: "+pdf.numPages+" páginas.";
+  for(let n=1;n<=pdf.numPages;n++){
+   const page=await pdf.getPage(n), viewport=page.getViewport({scale:1.35});
+   const canvas=document.createElement("canvas"), context=canvas.getContext("2d");
+   canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);
+   canvas.setAttribute("aria-label","Página "+n+" de "+pdf.numPages);
+   pages.appendChild(canvas);
+   await page.render({canvasContext:context,viewport}).promise;
+  }
+ }catch(error){status.textContent="A apresentação não pôde ser exibida automaticamente neste navegador. Use o link para abrir o PDF original.";}
+})();
+</script>
 </body>
 </html>
