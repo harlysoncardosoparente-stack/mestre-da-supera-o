@@ -57,7 +57,18 @@ Essas associações não devem ser consideradas automaticamente confirmadas só 
 - Evitar transformar correlações, hipóteses ou exemplos em relações causais universais.
 - Conferir as afirmações antes de reutilizá-las em apresentações, materiais públicos ou respostas do notebook.
 
-## 6. Limites desta auditoria
+
+## 7. Tabela-mestra revisada — versão preliminar 0.2
+
+Foi criada uma nova versão de trabalho que reúne os quatro pilares, apresenta 25 afirmações examinadas, propõe redações corrigidas e separa recomendações educativas de resultados científicos:
+
+- [Consultar a Tabela-Mestra Revisada — versão preliminar 0.2](../dados/TABELA_MESTRA_REVISADA_PRELIMINAR.md)
+
+Esta versão não substitui a tabela original. Ela mantém afirmações sem comprovação ou sem fonte específica identificadas como pendentes, registra referências científicas identificáveis e descreve os limites de generalização. A conferência integral de todas as fontes, a complementação de metadados bibliográficos e a localização de trechos/páginas de suporte continuam pendentes.
+
+**Status atualizado:** tabela revisada preliminar criada e adicionada ao repositório; auditoria integral ainda não concluída. O Notebook Gemini e o site não foram alterados.
+
+## 8. Limites desta auditoria
 
 Esta revisão identificou os registros e as duplicações visíveis na tabela exportada e conferiu páginas bibliográficas/oficiais de algumas referências. Não houve leitura integral de todos os materiais originais, nem validação frase a frase das quatro linhas da tabela. O PDF, o áudio, a imagem, o mapa mental e as capturas de tela foram organizados no repositório, mas não tiveram seu conteúdo visual/audiovisual auditado nesta etapa.
 
