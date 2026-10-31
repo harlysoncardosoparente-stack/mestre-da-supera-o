@@ -72,6 +72,6 @@ Esta versão não substitui a tabela original. Ela mantém afirmações sem comp
 
 Esta revisão identificou os registros e as duplicações visíveis na tabela exportada e conferiu páginas bibliográficas/oficiais de algumas referências. Não houve leitura integral de todos os materiais originais, nem validação frase a frase das quatro linhas da tabela. O PDF, o áudio, a imagem, o mapa mental e as capturas de tela foram organizados no repositório, mas não tiveram seu conteúdo visual/audiovisual auditado nesta etapa.
 
-**Status geral:** referências parcialmente identificadas; duplicações documentais confirmadas; correspondência entre afirmações e evidências ainda pendente.
+**Status geral atualizado:** a tabela original permanece preservada; uma tabela-mestra revisada preliminar (versão 0.2), com 25 afirmações distribuídas pelos quatro pilares, foi adicionada ao repositório. As duplicações documentais [2]/[7] e [8]/[9] permanecem registradas. A correspondência afirmação → fonte foi examinada preliminarmente, mas a leitura integral de todas as 17 fontes, a complementação dos metadados e a conferência de trechos/páginas ainda estão pendentes.
 
 > Princípio de auditoria: uma referência identificada não torna automaticamente válida toda afirmação que aparece ao lado dela.
